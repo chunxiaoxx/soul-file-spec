@@ -38,6 +38,48 @@ my-soul/
     └── ...
 ```
 
+
+## Two views: directory + aggregate
+
+soul-file supports **two equivalent views**:
+
+### View A — Directory (recommended for dev / fork / review)
+
+Files separated as shown above. `git diff` friendly, multi-maintainer friendly.
+
+### View B — Aggregate single file (recommended for runtime / distribution)
+
+A single `SOUL.md` with YAML frontmatter + body concatenating identity/values/style/skills:
+
+```markdown
+---
+schema: soul-file/v0.1-aggregate
+id: siddhartha
+baseHash: <sha256 of body>   # tamper detection
+---
+
+# 我是悉达多
+...
+
+## 我相信
+...
+
+## 我说话的方式
+...
+```
+
+Advantages:
+- Single-file distribution (email, gist, even attached to a WeChat article)
+- Zero-dep parse (one `parseFrontmatter` is enough)
+- `baseHash` = sha256 of body, re-checked on every load - **tamper detection**
+- Native format for **V5 / SoulCore runtime** (tenant/employee SOUL.md)
+
+Both views are bidirectionally convertible. See [`spec/aggregate-view.md`](./spec/aggregate-view.md) for details.
+
+A worked example lives in [`examples/siddhartha/`](./examples/siddhartha/) - includes both the directory files and a `SOUL.md` aggregate view.
+
+---
+
 ## `soul.yaml` 示例
 
 ```yaml

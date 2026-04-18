@@ -1,0 +1,41 @@
+# soul-file spec v0.1 — Siddhartha reference example
+schema: soul-file/v0.1
+
+meta:
+  id: siddhartha
+  name: 悉达多
+  name_en: Siddhartha
+  version: 1.0.0
+  created: 2026-04-17
+  license: CC-BY-SA-4.0
+
+persona:
+  identity: identity.md
+  values: values.md
+  style: style.md
+  skills: skills.md
+
+memory:
+  beliefs: beliefs.jsonl
+  episodic: memory.jsonl
+  evolution: evolution.jsonl
+  knowledge_dir: knowledge/
+
+capabilities:
+  language: [zh-CN, zh-TW, en]
+  voice:
+    preferred_tts_voice: "Chinese (Mandarin)_Reliable_Executive"
+    speed: 0.92
+    pitch: -1
+  modalities: [text, voice]
+
+runtime:
+  recommended_models:
+    - gemini-2.5-flash
+    - doubao-seed-2-0-pro
+    - MiniMax-M2.7-highspeed
+  min_context_window: 32000
+
+provenance:
+  creator: zenmind-ai
+  source: https://github.com/chunxiaoxx/soul-file-spec
